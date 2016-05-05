@@ -163,15 +163,6 @@ class ScalaRPCClient (client : String, network : String) extends RPCMarshallerUt
   def getBalance : Double = sendCommand("getbalance").toDouble
 
   /**
-   * The hash of the block header from the most recent block on the best block chain,
-   * encoded as hex in RPC byte order
-   * https://bitcoin.org/en/developer-reference#getbalance
- *
-   * @return
-   */
-  def getBestBlockHash : String = sendCommand("getbestblockhash")
-
-  /**
     * Returns a p2sh address and adds it to the wallet.
     * https://bitcoin.org/en/developer-reference#addmultisigaddress
  *
