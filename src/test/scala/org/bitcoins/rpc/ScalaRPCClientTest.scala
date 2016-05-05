@@ -66,7 +66,6 @@ class ScalaRPCClientTest extends FlatSpec with MustMatchers {
   }
 
   it must "get difficuluty" in {
-    print("diff: " + test.getDifficulty)
     test.getDifficulty must be (4.656542373906925E-10)
   }
 
@@ -83,13 +82,13 @@ class ScalaRPCClientTest extends FlatSpec with MustMatchers {
   }
 
   it must "get block hash" in {
-    test.sendCommand("getblockhash 0").trim must be ("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206")
+    test.getBlock(0) must be ("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206")
   }
 
   it must "add a 1-of-1 multisig address" in {
     test.sendCommand("importprivkey cRWEGSNfu7HB8V5doyDaRkWtEUe3jmpSminuD5F9Jyq3f9xxst2t")
     val address = "n3Dj9Utyu9EXxux4En49aHs59PdYStvang"
-    test.generateOneOfOneMultiSigAddress(1, address) must be (BitcoinAddress("2MtuY5ef3sGdBfdJUDyYUTYGPJU7Ef14vhB"))
+    test.generateOneOfOneMultiSigAddress(address) must be (BitcoinAddress("2MtuY5ef3sGdBfdJUDyYUTYGPJU7Ef14vhB"))
   }
 
 }
